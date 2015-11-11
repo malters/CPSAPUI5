@@ -1,16 +1,16 @@
-sap.ui.jsview("cpsapui5.Index", {
+sap.ui.jsview("view.Index", {
 
 	/** Specifies the Controller belonging to this View. 
 	* In the case that it is not implemented, or that "null" is returned, this View does not have a Controller.
-	* @memberOf cpsapui5.Index
+	* @memberOf view.Index
 	*/ 
 	getControllerName : function() {
-		return "cpsapui5.Index";
+		return "controller.Index";
 	},
 
 	/** Is initially called once after the Controller has been instantiated. It is the place where the UI is constructed. 
 	* Since the Controller is given to this method, its event handlers can be attached right away. 
-	* @memberOf cpsapui5.Index
+	* @memberOf view.Index
 	*/ 
 	createContent : function(oController) {
 		
@@ -25,11 +25,11 @@ sap.ui.jsview("cpsapui5.Index", {
 			          }, 
 			          { 
 			               "icon" : "http://www.carreraspopulares.com/v5-calendario/images/flags/cataluna.png",  
-			               "title" : "CATALU—A" 
+			               "title" : "CATALU√ëA" 
 			          } , 
 			          { 
 			               "icon" : "http://www.carreraspopulares.com/v5-calendario/images/flags/andalucia.png",  
-			               "title" : "ANDALUCÕA" 
+			               "title" : "ANDALUC√çA" 
 			          },
 			          { 
 			               "icon" : "http://www.carreraspopulares.com/v5-calendario/images/flags/castillalamancha.png", 
@@ -37,15 +37,15 @@ sap.ui.jsview("cpsapui5.Index", {
 			          }, 
 			          { 
 			               "icon" : "http://www.carreraspopulares.com/v5-calendario/images/flags/castillaleon.png", 
-			               "title" : "CASTILLA-LE”N" 
+			               "title" : "CASTILLA-LE√ìN" 
 			          }, 
 			          { 
 			               "icon" : "http://www.carreraspopulares.com/v5-calendario/images/flags/paisvasco.png",  
-			               "title" : "PAÕS VASCO" 
+			               "title" : "PA√çS VASCO" 
 			          } , 
 			          { 
 			               "icon" : "http://www.carreraspopulares.com/v5-calendario/images/flags/aragon.png",  
-			               "title" : "ARAG”N" 
+			               "title" : "ARAG√ìN" 
 			          },
 			          { 
 			               "icon" : "http://www.carreraspopulares.com/v5-calendario/images/flags/galicia.png", 
@@ -105,15 +105,17 @@ sap.ui.jsview("cpsapui5.Index", {
  	     });
  	   container1.setModel(model);
  	   
- 	  var moduleTile = new sap.m.StandardTile({
+ 	   var moduleTile = new sap.m.StandardTile({
 	      title : '{title}',
 	      number:'{press}',
 	      info:'{type}', 
 		  numberUnit:'{type}',
 		  icon:"{icon}"
 		});
- 	   
- 	    container1.bindAggregation("tiles", "/Tiles", moduleTile);
+ 	  
+ 	    moduleTile.attachPress(oController,oController.onGoToDetail);
+ 	    
+ 	   	container1.bindAggregation("tiles", "/Tiles", moduleTile);
  		
  	    Page.addContent(container1);
 
